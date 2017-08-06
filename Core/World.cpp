@@ -1,11 +1,11 @@
 #include "World.h"
 #include "GameManager.h"
 #include "PlatEngine.h"
-#include "../Physics/PhysicsManager.h"
 #include "Box2D.h"
 #include "Time.h"
 #include "Macros.h"
 
+#include "../Physics/PhysicsManager.h"
 #include "../../Application/TiledMapEditor/TiledMapEditor.h"
 #include "../Graphics/Rendering/RenderManager.h"
 #include "../Graphics/Rendering/RenderQueue.h"
@@ -15,7 +15,6 @@
 #include "../GameObject/GameObjectComponents/RenderComponent.h"
 #include "../GameObject/GameObjectComponents/TransformComponent.h"
 #include "../GameObject/GameObjectComponents/RigidBodyComponent.h"
-
 #include "../GameObject/Player.h"
 
 class RenderComponent;

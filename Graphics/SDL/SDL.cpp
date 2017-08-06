@@ -30,7 +30,7 @@ void SDL::SetRenderer()
 
 void SDL::SetWindow()
 {
-	s_pSDLWindow = SDL_CreateWindow("PlatEngine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, m_windowWidth, m_windowHeight, SDL_WINDOW_SHOWN); // TODO: Find a magical place for these magic numbers...
+	s_pSDLWindow = SDL_CreateWindow("PlatEngine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, m_windowWidth, m_windowHeight, SDL_WINDOW_SHOWN);
 }
 
 void SDL::OpenWindow(int windowWidth, int windowHeight)
@@ -90,8 +90,8 @@ void SDL::Render(RenderQueue& queue, const Camera* pCamera)
 	m_currentTime = SDL_GetTicks();
 	g_deltaTime = (m_currentTime - m_oldTime);
 
-	// Setting the renderer
-	SDL_SetRenderDrawColor(s_pSDLRenderer, 0, 0, 0, 255);
+	// Setting the background color
+	SDL_SetRenderDrawColor(s_pSDLRenderer, 0, 255, 0, 255);
 	SDL_RenderClear(s_pSDLRenderer);
 
 	// TODO: Convert to a priority queue!
@@ -102,6 +102,7 @@ void SDL::Render(RenderQueue& queue, const Camera* pCamera)
 		// Apply camera offset to tile positions
 		int cameraX = pCamera->GetRect()->x;
 		int cameraY = pCamera->GetRect()->y;
+
 		float x = tilesToRender[i]->m_x - cameraX;
 		float y = tilesToRender[i]->m_y - cameraY;
 		float w = tilesToRender[i]->m_w;
@@ -121,15 +122,18 @@ void SDL::Render(RenderQueue& queue, const Camera* pCamera)
 	const std::vector<GameObject*> gameObjectsToRender = queue.GetGameObjects();
 	for (auto it : gameObjectsToRender)
 	{
+		int cameraX = pCamera->GetRect()->x;
+		int cameraY = pCamera->GetRect()->y;
+
 		// TODO: Remove these cast's!
 		RenderComponent* pRender = dynamic_cast<RenderComponent*>(it->GetComponent(ComponentType::k_RendererComponent));
 		TransformComponent* pTransform = dynamic_cast<TransformComponent*>(it->GetComponent(ComponentType::k_TransformComponent));
 		float x = pTransform->GetX();
 		float y = pTransform->GetY();
-		if (pCamera || strcmp( it->GetName(), "Player" ))
+		if (pCamera || strcmp(it->GetName(), "Player"))
 		{
-			x -= pCamera->GetRect()->x;
-			y -= pCamera->GetRect()->y;
+			x -= cameraX;
+			y -= cameraY;
 		}
 
 		pRender->GetSprite()->DrawSprite(x, y, pTransform->GetWidth(), pTransform->GetHeight(), 0, 0);

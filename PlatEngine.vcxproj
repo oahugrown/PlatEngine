@@ -77,8 +77,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)_bin\</OutDir>
-    <IntDir>$(SolutionDir)_bin\</IntDir>
+    <OutDir>$(SolutionDir)_bin\PlatEngine\</OutDir>
+    <IntDir>$(SolutionDir)_bin\PlatEngine\</IntDir>
     <LibraryPath>$(SolutionDir)_libs\SDL2\lib\x64;$(SolutionDir)_libs\SDL2_image\lib\x64;$(SolutionDir)_libs\SDL2_mixer\lib\x64;$(SolutionDir)_libs\Box2D\libs\x64\Debug;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)_libs\SDL2\include;$(SolutionDir)_libs\SDL2_image\include;$(SolutionDir)_libs\SDL2_mixer\include;$(SolutionDir)_bin\Application;$(SolutionDir)Application\Utilities;$(SolutionDir)_libs\Box2D\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
@@ -93,8 +93,8 @@
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)_libs\SDL2\include;$(SolutionDir)_libs\SDL2_image\include;$(SolutionDir)_libs\SDL2_mixer\include;$(SolutionDir)_libs\LuaPlus;$(SolutionDir)_bin\Application;$(SolutionDir)Application\Utilities;$(SolutionDir)_libs\Box2D\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)_libs\SDL2\lib\x64;$(SolutionDir)_libs\SDL2_image\lib\x64;$(SolutionDir)_libs\SDL2_mixer\lib\x64;$(SolutionDir)_libs\Box2D\libs\x64\Release;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)_bin\</OutDir>
-    <IntDir>$(SolutionDir)_bin\</IntDir>
+    <OutDir>$(SolutionDir)_bin\PlatEngine\</OutDir>
+    <IntDir>$(SolutionDir)_bin\PlatEngine\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -121,7 +121,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);WIREFRAME="$(ConfigurationName)";WIREFRAME="$(ConfigurationName)"</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -174,7 +174,7 @@
       </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);WIREFRAME="$(ConfigurationName)";WIREFRAME="$(ConfigurationName)"</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)Core</AdditionalIncludeDirectories>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>

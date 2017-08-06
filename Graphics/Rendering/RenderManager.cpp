@@ -24,28 +24,25 @@ RenderManager::~RenderManager()
 
 void RenderManager::StartUp()
 {
-	if (m_pGraphics->GetGraphics())
-	{
-		m_pGraphics->GetGraphics()->OpenWindow(k_windowWidth, k_windowHeight);
-	}
+	GraphicsRenderer &m_renderer = *m_pGraphics->GetGraphics();
+	if (&m_renderer)
+		m_renderer.OpenWindow(k_windowWidth, k_windowHeight);
 };
 
 // Shut down the renderer by closing the program window 
 void RenderManager::ShutDown()
 {
-	if (m_pGraphics->GetGraphics())
-	{
-		m_pGraphics->GetGraphics()->CloseWindow();
-	}
+	GraphicsRenderer &m_renderer = *m_pGraphics->GetGraphics();
+	if (&m_renderer)
+		m_renderer.CloseWindow();
 };
 
 // Drawing all the sprites
 void RenderManager::DrawSprites( const Camera* camera)
 {
-	if (m_pGraphics->GetGraphics())
-	{
-		m_pGraphics->GetGraphics()->Render(*m_pRenderQueue, camera);
-	}
+	GraphicsRenderer &m_renderer = *m_pGraphics->GetGraphics();
+	if (&m_renderer)
+		m_renderer.Render(*m_pRenderQueue, camera);
 }
 
 bool RenderManager::AddGameObjectToRender(GameObject* pGameObject)

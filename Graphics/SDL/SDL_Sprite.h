@@ -26,7 +26,6 @@ public:
 
 	SDL_Rect* LoadClip(int x, int y, int w, int h);
 
-	virtual bool Draw(int x, int y, int w, int h) override;
 	virtual bool DrawSprite(float u, float v, float u2, float v2, float tX, float tY) override;
 	virtual bool LoadImage() override;
 	virtual void SetFile(const char* pfile) override;

@@ -53,6 +53,6 @@ void GameManager::Run()
 		m_running = m_pEventPoll->RunEventPoll();
 	}
 
-	// Our game is no long running, so shut PlatEngine will shut be shutting down
+	// Our game is no long running, so PlatEngine will shut be shutting down
 	PlatEngine::GetEngine()->ShutDownPlatEngine();
 };
